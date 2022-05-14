@@ -1,17 +1,15 @@
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
 
-// import {
-  // BrowserRouter as Router,
-  // Switch,
-  // Routes,
-  // Route,
-  //Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
 
@@ -56,20 +54,20 @@ function App() {
       {/* for navbar props */}
       {/* <Navbar title = "TextUtil" aboutText = "About TextUtil"/> */}
       {/* <Navbar/> */}
-      {/* <Router> */}
+      <Router>
         <Navbar title = "TextUtil" mode={mode} toggleMode={toggleMode}/>
         <Alert alert = {alert}/>
           {/* for TextForm props */}
         <div className="container my-3">
-          <TextForm showAlert={showAlert} heading = "Enter The Text To Analyze Below" mode={mode}/>
+          {/* <TextForm showAlert={showAlert} heading = "Enter The Text To Analyze Below" mode={mode}/> */}
           
-              {/* For version 6 *
+              {/* For version 6 * */}
            <Routes>
               <Route exact path="/" element={<TextForm showAlert={showAlert} heading = "Enter The Text To Analyze Below" mode={mode}/>}/>
-              <Route exact path="/about" element={<About />}/>
+              <Route exact path="/about" element={<About mode={mode}/>}/>
             </Routes> 
 
-            Exact match
+            {/* Exact match
                 /users --> component 1
                 /users/home --> component 2
                 React uses partial matching so we use exact path
@@ -84,7 +82,7 @@ function App() {
                 </Route>
               </Switch>       */}
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }
